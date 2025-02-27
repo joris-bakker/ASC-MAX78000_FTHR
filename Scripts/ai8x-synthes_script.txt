@@ -1,0 +1,2 @@
+##C-Code Tool
+python ai8xize.py --test-dir CNN_example --prefix ASC_CNN --checkpoint-file Generated-Checkpoint-Files/1dcnn_final_checkpoint_q8.pth.tar --config-file Yaml-Network-Description/classifier_final.yaml --device MAX78000 --timer 0 --display-checkpoint --verbose --softmax --device MAX78000 --board-name FTHR_RevA --overwrite

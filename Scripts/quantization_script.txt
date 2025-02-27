@@ -1,0 +1,2 @@
+## Quantize
+python quantize.py Generated-Checkpoint-Files/1dcnn_final_checkpoint.pth.tar Generated-Checkpoint-Files/qat_class_ASC_checkpointv5_q8.pth.tar --device MAX78000 -v

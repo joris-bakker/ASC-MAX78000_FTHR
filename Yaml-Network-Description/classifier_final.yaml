@@ -1,0 +1,60 @@
+---
+# HWC (little data) configuration for ASC
+# MNIST classifier Model
+# Compatible with MAX78000
+
+arch: 1dcnn_final
+dataset: mnist_40311
+
+# Define layer parameters in order of the layer sequence
+layers:
+  - name: L1
+    in_dim: [311, 1]
+    pad: 0
+    activate: ReLU
+    data_format: HWC
+    out_offset: 0x2000
+    processors: 0x000000ffffffffff
+    operation: Conv1d
+    kernel_size: 5
+  - name: L2
+    pad: 0
+    activate: ReLU
+    out_offset: 0x0000
+    processors: 0xffffffffffffffff
+    operation: Conv1d
+    kernel_size: 3
+  - name: L3
+    pad: 1
+    max_pool: 2
+    pool_stride: 2
+    activate: ReLU
+    out_offset: 0x2000
+    processors: 0xffffffffffffffff
+    operation: Conv1d
+    kernel_size: 5
+  - name: L4
+    pad: 1
+    avg_pool: 2
+    pool_stride: 2
+    activate: ReLU
+    out_offset: 0x0000
+    processors: 0xffffffffffffffff
+    operation: Conv1d
+    kernel_size: 3
+  - name: L5
+    pad: 0
+    max_pool: 2
+    pool_stride: 2
+    activate: ReLU
+    out_offset: 0x2000
+    processors: 0xffffffffffffffff
+    operation: Conv1d
+    kernel_size: 6
+  - name: L6
+    flatten: true
+    out_offset: 0x1000
+    processors: 0xffffffff00000000
+    operation: MLP
+    output_width: 32
+    activate: None
